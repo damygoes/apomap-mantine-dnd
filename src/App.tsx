@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import TasksTable from "./components/TasksTable";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="flex flex-col justify-start items-start p-4 gap-4 h-screen w-full border-none">
+      <h1>Welcome to Drag-N-Drop</h1>
+      <div className="flex justify-between items-start h-full w-full p-2 gap-4 ">
+        <div className="w-1/2 p-2 bg-slate-200 h-full rounded-md border-none">
+          <TasksTable />
+        </div>
+        <div
+          className="w-1/2 p-2 bg-slate-200 h-full rounded-md border-none"
+          onDragOver={(e) => {
+            e.preventDefault();
+          }}
+          onDrop={(e) => {
+            console.log(`Dropped in Tour`);
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          <h2>Tours</h2>
+        </div>
+      </div>
     </div>
   );
 }
